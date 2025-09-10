@@ -69,45 +69,16 @@ int main() {
     printf("Digite o PIB do estado da carta 2: \n");
     scanf("%lf", &pib2);
     
-    
-    // Exibição dos Dados das Cartas:
-    // Exibindo os dados da carta 1:
-    printf("\n");
-    printf("Carta 1: \n");
-    printf("Nome do estado: %c \n", nomeDoEstado1);
-    printf("Códico da carta 1: %s \n", codigoDoEstado1);
-    printf("População : %lu \n",populacao1);
-    printf("Quantidade de pontos túriscos: %d \n",quantidadeDePontosTuristicos1);
-    printf("Área: %.2f \n",area1);
-    printf("PIB: %.2lf \n",pib1);
 
     double densidadePopulacional1 = (double)populacao1/area1;
     double pibPerCapita1 = pib1/area1;
     // Casting do unsigned long int para double, para evitar a perda de possivel dados caso for convertido pra float, o restanto é mantido em float.
     double superPoder1 = ((double)populacao1 + area1 + pib1 + (float)quantidadeDePontosTuristicos1 + pibPerCapita1)/densidadePopulacional1;
 
-    printf("Densidade Populacional: %.2lf \n", densidadePopulacional1);
-    printf("PIB per Capita: %.2f \n", pibPerCapita1);
-    printf("Super Poder: %.2lf \n", superPoder1);
-
-    // Exibindo os dados da carta 2:
-    printf("\n");
-    printf("Carta 2: \n");
-    printf("Nome do estado: %c \n", nomeDoEstado2);
-    printf("Códico da carta 2: %s \n", codigoDoEstado2);
-    printf("População : %lu \n", populacao2);
-    printf("Quantidade de pontos túriscos: %d \n",quantidadeDePontosTuristicos2);
-    printf("Área: %.2f \n",area2);
-    printf("PIB: %.2lf \n",pib2);
-
     double densidadePopulacional2 = (double)populacao2/area2;
     double pibPerCapita2 = pib2/area2;
     // Casting do unsigned long int para double, para evitar a perda de possivel dados caso for convertido pra float, o restanto é mantido em float.
     double superPoder2 = ((double)populacao2 + area2 + pib2 + quantidadeDePontosTuristicos2 + pibPerCapita2)/densidadePopulacional2;
-
-    printf("Densidade Populacional: %.2lf \n", densidadePopulacional2);
-    printf("PIB per Capita: %.2f \n", pibPerCapita2);
-    printf("Super Poder: %.2lf \n", superPoder2);
 
 
     // Comparação de Cartas:
@@ -115,58 +86,92 @@ int main() {
     // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
     // Variáveis para carta Vencedora:
     int pontuacao1 = 0,pontuacao2 = 0;
+    int menu;
+    printf("Escolha opcão de comparação: \n1 - População\n2 - Quantidade de pontos turisticos\n3 - Área\n4 - Pib\n5 - Densidade Populacional\n6 - Pib per Capita\n7 - Super Poder\n8 - Soma de todos\n");
+    scanf("%d", &menu);
 
-    if(populacao1 > populacao2){
-        pontuacao1++;
-    }else{
-        pontuacao2++;
-    }
+    switch (menu)
+    {
+    case 1:
+        if(populacao1 > populacao2){
+            printf("Cidade vencedora(População) é: %c\n", nomeDoEstado1);
+            pontuacao1++;
+        }else{
+            printf("Cidade vencedora(População) é: %c\n", nomeDoEstado2);
+            pontuacao2++;
+        }
+        break;
 
-    if(quantidadeDePontosTuristicos1 > quantidadeDePontosTuristicos2){
-        pontuacao1++;
-    }else{
-        pontuacao2++;
-    }
+    case 2:
+        if(quantidadeDePontosTuristicos1 > quantidadeDePontosTuristicos2){
+            printf("Cidade vencedora(Qtd De Pontos Turísticos) é: %c\n", nomeDoEstado1);
+            pontuacao1++;
+        }else{
+            printf("Cidade vencedora(Qtd De Pontos Turísticos) é: %c\n", nomeDoEstado2);
+            pontuacao2++;
+        }
+        break;
 
-    if(area1 > area2){
-        pontuacao1++;
-    }else{
-        pontuacao2++;
-    }
+    case 3:
+        if(area1 > area2){
+            printf("Cidade vencedora(Área) é: %c\n", nomeDoEstado1);
+            pontuacao1++;
+        }else{
+            printf("Cidade vencedora(Área) é: %c\n", nomeDoEstado2);
+            pontuacao2++;
+        }
+        break;
+
+    case 4:
+        if(pib1 > pib2){
+            printf("Cidade vencedora(PIB) é: %c\n", nomeDoEstado1);
+            pontuacao1++;
+        }else{
+            printf("Cidade vencedora(PIB) é: %c\n", nomeDoEstado2);
+            pontuacao2++;
+        }
+        break;
+
+    case 5:
+        if(densidadePopulacional1 < densidadePopulacional2){
+            printf("Cidade vencedora(Densidade Populacional) é: %c\n", nomeDoEstado1);
+            pontuacao1++;
+        }else{
+            printf("Cidade vencedora(Densidade Populacional) é: %c\n", nomeDoEstado2);
+            pontuacao2++;
+        }
+        break;
     
-    if(pib1 > pib2){
-        pontuacao1++;
-    }else{
-        pontuacao2++;
+    case 6:
+        if(pibPerCapita1 > pibPerCapita2){
+            printf("Cidade vencedora(PIB per Capita) é: %c\n", nomeDoEstado1);
+            pontuacao1++;
+        }else{
+            printf("Cidade vencedora(PIB per Capita) é: %c\n", nomeDoEstado2);
+            pontuacao2++;
+        }
+        break;
+    
+    case 7:
+         if(superPoder1 > superPoder2){
+            printf("Cidade vencedora(Super Poder) é: %c\n", nomeDoEstado1);
+            pontuacao1++;
+        }else{
+            printf("Cidade vencedora(Super Poder) é: %c\n", nomeDoEstado2);
+            pontuacao2++;
+        }
+        break;
+
+    case 8:
+        if(pontuacao1 > pontuacao2){
+            printf("Cidade vencedora(Total) é: %c\n, com %d", nomeDoEstado1,pontuacao1);
+        }else{
+            printf("Cidade vencedora(Total) é: %c\n, com %d", nomeDoEstado2,pontuacao2);
+        }
+        break;
+
+    default:
+        break;
     }
-
-    if(densidadePopulacional1 < densidadePopulacional2){
-        pontuacao1++;
-    }else{
-        pontuacao2++;
-    }
-
-    if(pibPerCapita1 > pibPerCapita2){
-        pontuacao1++;
-    }else{
-        pontuacao2++;
-    }
-
-    if(superPoder1 > superPoder2){
-        pontuacao1++;
-    }else{
-        pontuacao2++;
-    }
-
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
-
-    if(pontuacao1 > pontuacao2){
-        printf("Cidade vencedora é: %c\n", nomeDoEstado1);
-    }else{
-        printf("Cidade vencedora é: %c\n", nomeDoEstado2);
-    }
-
     return 0;
 }
